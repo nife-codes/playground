@@ -1,11 +1,8 @@
 "use client"
 
-import React from "react"
-
-import { useEffect, useRef, useCallback } from "react"
+import React, { useEffect, useRef, useCallback } from "react"
 import { useGame2048 } from "../hooks/use-game-2048"
 import { GameBoard } from "./game-board"
-import { GameRating } from "./game-rating"
 import { Button } from "./ui/button"
 import { RotateCcw, Trophy, Zap } from "lucide-react"
 
@@ -59,35 +56,6 @@ function GameOverlay({
   )
 }
 
-function SpiderLogo() {
-  return (
-    <svg viewBox="0 0 100 100" className="w-12 h-12 sm:w-16 sm:h-16 text-primary">
-      <ellipse cx="50" cy="40" rx="20" ry="15" fill="currentColor" />
-      <ellipse cx="50" cy="60" rx="25" ry="20" fill="currentColor" />
-      {/* Legs */}
-      {[
-        "M25 45 Q5 30 0 20",
-        "M25 50 Q0 45 -5 55",
-        "M25 55 Q5 70 0 80",
-        "M25 60 Q10 80 5 95",
-        "M75 45 Q95 30 100 20",
-        "M75 50 Q100 45 105 55",
-        "M75 55 Q95 70 100 80",
-        "M75 60 Q90 80 95 95",
-      ].map((d, i) => (
-        <path
-          key={i}
-          d={d}
-          stroke="currentColor"
-          strokeWidth="4"
-          fill="none"
-          strokeLinecap="round"
-        />
-      ))}
-    </svg>
-  )
-}
-
 export function SpiderGame() {
   const {
     grid,
@@ -103,7 +71,7 @@ export function SpiderGame() {
   const containerRef = useRef<HTMLDivElement>(null)
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
 
-  // Keyboard controls
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
@@ -135,15 +103,9 @@ export function SpiderGame() {
       const minSwipe = 30
 
       if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (Math.abs(deltaX) > minSwipe) {
-          handleMove(deltaX > 0 ? "right" : "left")
-          playMoveSound()
-        }
+        if (Math.abs(deltaX) > minSwipe) handleMove(deltaX > 0 ? "right" : "left")
       } else {
-        if (Math.abs(deltaY) > minSwipe) {
-          handleMove(deltaY > 0 ? "down" : "up")
-          playMoveSound()
-        }
+        if (Math.abs(deltaY) > minSwipe) handleMove(deltaY > 0 ? "down" : "up")
       }
 
       touchStartRef.current = null
@@ -151,7 +113,6 @@ export function SpiderGame() {
     [handleMove]
   )
 
-  // Simple sound effect using Web Audio API
   const playMoveSound = useCallback(() => {
     try {
       const audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
@@ -168,66 +129,46 @@ export function SpiderGame() {
 
       oscillator.start(audioContext.currentTime)
       oscillator.stop(audioContext.currentTime + 0.1)
-    } catch {
-      // Audio not supported
-    }
+    } catch {}
   }, [])
 
   return (
     <div
       ref={containerRef}
-      className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto px-4"
+      className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto px-4 min-h-screen"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Header */}
-      <div className="flex items-center gap-4">
-        <SpiderLogo />
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight text-balance">
-            Spider-Verse 2048
-          </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground">
-            Merge tiles to unlock the multiverse!
-          </p>
+
+      <div className="flex flex-col items-center gap-3">
+        <h1 className="text-5xl font-black text-foreground">2048</h1>
+        <div className="flex items-center gap-3 w-full justify-center flex-wrap">
+          <ScoreBox label="Score" value={score} icon={Zap} />
+          <ScoreBox label="Best" value={bestScore} icon={Trophy} />
+          <Button
+            onClick={restart}
+            variant="outline"
+            size="sm"
+            className="gap-2 border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
+          >
+            <RotateCcw className="w-4 h-4" />
+            <span className="hidden sm:inline">New Game</span>
+          </Button>
         </div>
       </div>
 
-      {/* Scores and Controls */}
-      <div className="flex items-center gap-3 w-full justify-center flex-wrap">
-        <ScoreBox label="Score" value={score} icon={Zap} />
-        <ScoreBox label="Best" value={bestScore} icon={Trophy} />
-        <Button
-          onClick={restart}
-          variant="outline"
-          size="sm"
-          className="gap-2 border-primary/50 text-primary hover:bg-primary/10 bg-transparent"
-        >
-          <RotateCcw className="w-4 h-4" />
-          <span className="hidden sm:inline">New Game</span>
-        </Button>
-      </div>
-
-      {/* Game Board */}
       <div className="relative w-full flex justify-center">
         <GameBoard grid={grid} />
         {gameOver && <GameOverlay type="lose" onRestart={restart} />}
-        {won && !gameOver && (
-          <GameOverlay type="win" onRestart={restart} onContinue={continueGame} />
-        )}
+        {won && !gameOver && <GameOverlay type="win" onRestart={restart} onContinue={continueGame} />}
       </div>
 
-      {/* Instructions */}
       <div className="text-center text-xs text-muted-foreground space-y-1">
-        <p>Use arrow keys or swipe to move tiles</p>
         <p className="flex items-center justify-center gap-2">
           <span className="inline-block w-3 h-3 bg-primary/50 rounded" /> Miles Morales (2-64)
           <span className="inline-block w-3 h-3 bg-accent/50 rounded" /> Ghost Spider (128+)
         </p>
       </div>
-
-      {/* Rating */}
-      <GameRating />
     </div>
   )
 }
