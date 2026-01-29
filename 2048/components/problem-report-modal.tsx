@@ -33,8 +33,7 @@ export function ProblemReportModal({
 
     setLoading(true)
     try {
-      // Firebase integration ready
-      // Save problem report to Firestore
+      
       const reportData = {
         email,
         problem,
@@ -43,7 +42,7 @@ export function ProblemReportModal({
         url: typeof window !== "undefined" ? window.location.href : "",
       }
 
-      // For now, save to localStorage as fallback
+      
       const reports = JSON.parse(
         localStorage.getItem("spider-problem-reports") || "[]"
       )

@@ -32,12 +32,12 @@ export function GameRating() {
     
     let updatedRatings: Rating[]
     if (userRating !== null) {
-      // Update existing rating
+      
       updatedRatings = ratings.map((r: Rating, i: number) =>
         i === ratings.length - 1 ? newRating : r
       )
     } else {
-      // Add new rating
+      
       updatedRatings = [...ratings, newRating]
     }
     

@@ -25,15 +25,13 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
     if (rating === 0) return
 
     try {
-      // Firebase integration ready
-      // Save rating to Firestore
+    
       const ratingData = {
         stars: rating,
         timestamp: new Date().toISOString(),
         userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
       }
 
-      // For now, save to localStorage as fallback
       const ratings = JSON.parse(localStorage.getItem("spider-ratings") || "[]")
       ratings.push(ratingData)
       localStorage.setItem("spider-ratings", JSON.stringify(ratings))

@@ -1,37 +1,31 @@
 "use client"
 
 import React, { useState } from "react"
-import { Menu, X, Github, Star, AlertCircle, Moon, Sun, HelpCircle } from "lucide-react"
+import { Menu, X, Github, Star, AlertCircle, HelpCircle } from "lucide-react"
 import { Button } from "./ui/button"
 import { RatingModal } from "./rating-modal"
-import { ProblemReportModal } from "./problem-report-modal"
 import { HelpTooltip } from "./help-tooltip"
-import { useTheme } from "next-themes"
 
 export function TopMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const [showRating, setShowRating] = useState(false)
-  const [showProblem, setShowProblem] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
 
   const handleGithubClick = () => {
-    window.open("https://github.com", "_blank")
+    window.open("https://github.com/nife-codes/playground", "_blank")
+  }
+
+  const handleReportClick = () => {
+    window.open("https://github.com/nife-codes/playground/issues/new", "_blank")
   }
 
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-          {/* Logo area */}
           <div className="flex items-center gap-2">
-            <div className="text-lg sm:text-xl font-black text-primary">🕷️</div>
+            <div className="text-lg sm:text-xl font-black text-primary">2048</div>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-2">
             <HelpTooltip>
               <Button
@@ -55,7 +49,7 @@ export function TopMenu() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setShowProblem(true)}
+              onClick={handleReportClick}
               className="gap-2 text-xs hover:bg-destructive/10"
             >
               <AlertCircle className="w-4 h-4" />
@@ -70,21 +64,8 @@ export function TopMenu() {
               <Github className="w-4 h-4" />
               <span>Contribute</span>
             </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleTheme}
-              className="gap-2 text-xs hover:bg-muted/50"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
-            </Button>
           </div>
 
-          {/* Mobile Hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
@@ -98,7 +79,6 @@ export function TopMenu() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden border-t border-border/50 bg-card/50 backdrop-blur-sm">
             <div className="px-4 py-3 space-y-2">
@@ -120,7 +100,7 @@ export function TopMenu() {
               </button>
               <button
                 onClick={() => {
-                  setShowProblem(true)
+                  handleReportClick()
                   setIsOpen(false)
                 }}
                 className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm"
@@ -138,28 +118,12 @@ export function TopMenu() {
                 <Github className="w-4 h-4" />
                 <span>Contribute</span>
               </button>
-              <button
-                onClick={() => {
-                  toggleTheme()
-                  setIsOpen(false)
-                }}
-                className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm"
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-4 h-4" />
-                ) : (
-                  <Moon className="w-4 h-4" />
-                )}
-                <span>Change theme</span>
-              </button>
             </div>
           </div>
         )}
       </div>
 
-      {/* Modals */}
       <RatingModal open={showRating} onOpenChange={setShowRating} />
-      <ProblemReportModal open={showProblem} onOpenChange={setShowProblem} />
     </>
   )
 }

@@ -7,7 +7,7 @@ interface GameTileProps {
   tile: Tile
 }
 
-// Miles Morales themed (lower values) and Ghost Spider themed (higher values)
+
 const tileStyles: Record<number, { bg: string; text: string; character: "miles" | "ghost" }> = {
   2: { bg: "bg-[#1a1a2e]", text: "text-red-400", character: "miles" },
   4: { bg: "bg-[#2d1b1b]", text: "text-red-300", character: "miles" },

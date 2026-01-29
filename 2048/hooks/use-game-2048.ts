@@ -125,9 +125,9 @@ function move(grid: (Tile | null)[][], direction: Direction): { grid: (Tile | nu
 
   const rotations: Record<Direction, number> = {
     left: 0,
-    up: 1,
+    down: 1,
     right: 2,
-    down: 3,
+    up: 3,
   }
 
   for (let i = 0; i < rotations[direction]; i++) {

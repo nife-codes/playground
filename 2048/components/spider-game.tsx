@@ -71,66 +71,70 @@ export function SpiderGame() {
   const containerRef = useRef<HTMLDivElement>(null)
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)
 
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault()
-        const direction = e.key.replace("Arrow", "").toLowerCase() as "up" | "down" | "left" | "right"
-        handleMove(direction)
-        playMoveSound()
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [handleMove])
-
-  // Touch controls
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStartRef.current = {
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY,
-    }
-  }, [])
-
-  const handleTouchEnd = useCallback(
-    (e: React.TouchEvent) => {
-      if (!touchStartRef.current) return
-
-      const deltaX = e.changedTouches[0].clientX - touchStartRef.current.x
-      const deltaY = e.changedTouches[0].clientY - touchStartRef.current.y
-      const minSwipe = 30
-
-      if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        if (Math.abs(deltaX) > minSwipe) handleMove(deltaX > 0 ? "right" : "left")
-      } else {
-        if (Math.abs(deltaY) > minSwipe) handleMove(deltaY > 0 ? "down" : "up")
-      }
-
-      touchStartRef.current = null
-    },
-    [handleMove]
-  )
-
   const playMoveSound = useCallback(() => {
     try {
       const audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
       const oscillator = audioContext.createOscillator()
       const gainNode = audioContext.createGain()
-
       oscillator.connect(gainNode)
       gainNode.connect(audioContext.destination)
-
       oscillator.frequency.setValueAtTime(400 + Math.random() * 200, audioContext.currentTime)
       oscillator.type = "sine"
       gainNode.gain.setValueAtTime(0.1, audioContext.currentTime)
       gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1)
-
       oscillator.start(audioContext.currentTime)
       oscillator.stop(audioContext.currentTime + 0.1)
     } catch {}
   }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault()
+        let direction: "up" | "down" | "left" | "right"
+        switch (e.key) {
+          case "ArrowUp":
+            direction = "up"
+            break
+          case "ArrowDown":
+            direction = "down"
+            break
+          case "ArrowLeft":
+            direction = "left"
+            break
+          case "ArrowRight":
+            direction = "right"
+            break
+          default:
+            return
+        }
+        handleMove(direction)
+        playMoveSound()
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [handleMove, playMoveSound])
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+  }, [])
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (!touchStartRef.current) return
+      const deltaX = e.changedTouches[0].clientX - touchStartRef.current.x
+      const deltaY = e.changedTouches[0].clientY - touchStartRef.current.y
+      const minSwipe = 30
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (Math.abs(deltaX) > minSwipe) handleMove(deltaX > 0 ? "right" : "left")
+      } else {
+        if (Math.abs(deltaY) > minSwipe) handleMove(deltaY > 0 ? "down" : "up")
+      }
+      touchStartRef.current = null
+    },
+    [handleMove]
+  )
 
   return (
     <div
@@ -139,7 +143,6 @@ export function SpiderGame() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-
       <div className="flex flex-col items-center gap-3">
         <h1 className="text-5xl font-black text-foreground">2048</h1>
         <div className="flex items-center gap-3 w-full justify-center flex-wrap">
@@ -156,13 +159,11 @@ export function SpiderGame() {
           </Button>
         </div>
       </div>
-
       <div className="relative w-full flex justify-center">
         <GameBoard grid={grid} />
         {gameOver && <GameOverlay type="lose" onRestart={restart} />}
         {won && !gameOver && <GameOverlay type="win" onRestart={restart} onContinue={continueGame} />}
       </div>
-
       <div className="text-center text-xs text-muted-foreground space-y-1">
         <p className="flex items-center justify-center gap-2">
           <span className="inline-block w-3 h-3 bg-primary/50 rounded" /> Miles Morales (2-64)
