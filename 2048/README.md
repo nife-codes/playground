@@ -1,8 +1,8 @@
-# Spider-Verse 2048 🕷️
+# Spider-Verse 2048 
 
 A modern, responsive 2048 game with Spider-Verse theming, built with Next.js, TypeScript, and Tailwind CSS.
 
-## Features ✨
+## Features 
 
 ### Game Features
 - **Classic 2048 Gameplay**: Merge tiles to reach 2048 and unlock the Spider-Verse
@@ -35,61 +35,6 @@ A modern, responsive 2048 game with Spider-Verse theming, built with Next.js, Ty
 - Custom Spider-Verse background image support
 - Responsive background that covers the entire screen
 - Overlay for better readability without breaking gameplay
-
-## Firebase Integration 🔥
-
-### Setup Instructions
-
-1. **Install Firebase**:
-   ```bash
-   npm install firebase
-   ```
-
-2. **Create Firebase Project**:
-   - Go to [Firebase Console](https://console.firebase.google.com/)
-   - Create a new project
-   - Enable Firestore Database
-
-3. **Configure Firebase in your app**:
-   - Copy your Firebase config from Project Settings
-   - Create a new file: `lib/firebase-config.ts`
-
-   ```typescript
-   import { initializeApp } from 'firebase/app';
-   import { getFirestore } from 'firebase/firestore';
-
-   const firebaseConfig = {
-     apiKey: "YOUR_API_KEY",
-     authDomain: "YOUR_AUTH_DOMAIN",
-     projectId: "YOUR_PROJECT_ID",
-     storageBucket: "YOUR_STORAGE_BUCKET",
-     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-     appId: "YOUR_APP_ID"
-   };
-
-   const app = initializeApp(firebaseConfig);
-   export const db = getFirestore(app);
-   ```
-
-4. **Update Firebase functions** in `lib/firebase.ts`:
-   - Uncomment Firebase code
-   - Remove localStorage fallback code
-   - Implement Firestore operations
-
-5. **Set Firestore Rules** (for public access during development):
-   ```
-   rules_version = '2';
-   service cloud.firestore {
-     match /databases/{database}/documents {
-       match /ratings/{document=**} {
-         allow read, write: if request.time < timestamp.date(2025, 12, 31);
-       }
-       match /problem-reports/{document=**} {
-         allow read, write: if request.time < timestamp.date(2025, 12, 31);
-       }
-     }
-   }
-   ```
 
 ### Data Schema
 
