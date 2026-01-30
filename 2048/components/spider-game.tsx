@@ -88,6 +88,20 @@ export function SpiderGame() {
   }, [])
 
   useEffect(() => {
+    const preventScroll = (e: TouchEvent) => {
+      e.preventDefault()
+    }
+
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener('touchmove', preventScroll, { passive: false })
+      return () => {
+        container.removeEventListener('touchmove', preventScroll)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
         e.preventDefault()
@@ -139,7 +153,7 @@ export function SpiderGame() {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto px-4 min-h-screen"
+      className="flex flex-col items-center gap-6 w-full max-w-lg mx-auto px-4 min-h-screen touch-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
