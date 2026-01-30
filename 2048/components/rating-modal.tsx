@@ -1,16 +1,8 @@
 "use client"
 
 import React, { useState } from "react"
-import { Star, Check } from "lucide-react"
-import { Button } from "./ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "./ui/dialog"
+import { Star } from "lucide-react"
+import { useRatings } from "../hooks/use-ratings"
 
 interface RatingModalProps {
   open: boolean
@@ -18,105 +10,111 @@ interface RatingModalProps {
 }
 
 export function RatingModal({ open, onOpenChange }: RatingModalProps) {
-  const [rating, setRating] = useState(0)
+  const [selectedStars, setSelectedStars] = useState(0)
+  const [hoverStars, setHoverStars] = useState(0)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const { averageRating, totalRatings, hasRated, submitRating } = useRatings()
+
+  if (!open) return null
 
   const handleSubmit = async () => {
-    if (rating === 0) return
-
-    try {
+    if (selectedStars === 0) return
     
-      const ratingData = {
-        stars: rating,
-        timestamp: new Date().toISOString(),
-        userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
-      }
-
-      const ratings = JSON.parse(localStorage.getItem("spider-ratings") || "[]")
-      ratings.push(ratingData)
-      localStorage.setItem("spider-ratings", JSON.stringify(ratings))
-
+    setIsSubmitting(true)
+    const success = await submitRating(selectedStars)
+    setIsSubmitting(false)
+    
+    if (success) {
       setSubmitted(true)
       setTimeout(() => {
         onOpenChange(false)
         setSubmitted(false)
-        setRating(0)
+        setSelectedStars(0)
       }, 2000)
-    } catch (error) {
-      console.error("Failed to submit rating:", error)
+    }
+  }
+
+  const handleClose = () => {
+    if (!isSubmitting) {
+      onOpenChange(false)
+      setSelectedStars(0)
+      setSubmitted(false)
     }
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Star className="w-5 h-5 text-accent" />
-            Rate the Game
-          </DialogTitle>
-          <DialogDescription>
-            Let us know what you think about Spider-Verse 2048!
-          </DialogDescription>
-        </DialogHeader>
-
-        {submitted ? (
-          <div className="flex flex-col items-center justify-center py-8 gap-4">
-            <div className="rounded-full bg-accent/20 p-3">
-              <Check className="w-6 h-6 text-accent" />
-            </div>
-            <p className="text-center text-sm font-medium">
-              Thanks for your feedback! 🕷️
-            </p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm">
+      <div className="bg-card border border-border rounded-lg shadow-lg max-w-md w-full p-6">
+        <div className="space-y-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-foreground mb-2">
+              {hasRated ? "Thanks for rating!" : submitted ? "Thank you!" : "Rate this game"}
+            </h2>
+            {averageRating !== null && (
+              <p className="text-sm text-muted-foreground">
+                Current rating: {averageRating} stars from {totalRatings} {totalRatings === 1 ? "rating" : "ratings"}
+              </p>
+            )}
           </div>
-        ) : (
-          <div className="flex flex-col gap-6 py-4">
-            <div className="flex justify-center gap-2">
-              {[1, 2, 3, 4, 5].map((star) => (
+
+          {hasRated ? (
+            <div className="text-center py-6">
+              <p className="text-muted-foreground">You've already rated this game!</p>
+            </div>
+          ) : submitted ? (
+            <div className="text-center py-6">
+              <p className="text-accent text-lg font-semibold">Rating submitted!</p>
+            </div>
+          ) : (
+            <>
+              <div className="flex justify-center gap-2 py-4">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    onClick={() => setSelectedStars(star)}
+                    onMouseEnter={() => setHoverStars(star)}
+                    onMouseLeave={() => setHoverStars(0)}
+                    className="transition-transform hover:scale-110"
+                    disabled={isSubmitting}
+                  >
+                    <Star
+                      className={`w-10 h-10 ${
+                        star <= (hoverStars || selectedStars)
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-muted-foreground"
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex gap-3">
                 <button
-                  key={star}
-                  onClick={() => setRating(star)}
-                  className="transition-transform hover:scale-110"
+                  onClick={handleClose}
+                  className="flex-1 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors"
+                  disabled={isSubmitting}
                 >
-                  <Star
-                    className={`w-8 h-8 ${
-                      star <= rating
-                        ? "fill-accent text-accent"
-                        : "text-muted-foreground hover:text-accent"
-                    }`}
-                  />
+                  Cancel
                 </button>
-              ))}
-            </div>
+                <button
+                  onClick={handleSubmit}
+                  disabled={selectedStars === 0 || isSubmitting}
+                  className="flex-1 px-4 py-2 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+              </div>
+            </>
+          )}
 
-            <div className="text-center text-sm text-muted-foreground">
-              {rating === 0 && "Click to rate"}
-              {rating === 1 && "Not great"}
-              {rating === 2 && "Could be better"}
-              {rating === 3 && "Pretty good"}
-              {rating === 4 && "Really good"}
-              {rating === 5 && "Amazing!"}
-            </div>
-
-            <DialogFooter className="gap-2">
-              <Button
-                variant="outline"
-                onClick={() => onOpenChange(false)}
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={handleSubmit}
-                disabled={rating === 0}
-                className="gap-2"
-              >
-                <Star className="w-4 h-4" />
-                Submit Rating
-              </Button>
-            </DialogFooter>
-          </div>
-        )}
-      </DialogContent>
-    </Dialog>
+          {!hasRated && !submitted && (
+            <p className="text-xs text-center text-muted-foreground">
+              Your rating is stored locally. You can only rate once per browser.
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
   )
 }
