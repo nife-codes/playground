@@ -5,12 +5,13 @@ import { Menu, X, Github, Star, AlertCircle, HelpCircle } from "lucide-react"
 import { Button } from "./ui/button"
 import { RatingModal } from "./rating-modal"
 import { BugReportModal } from "./bug-report-modal"
-import { HelpTooltip } from "./help-tooltip"
+import { HelpModal } from "./help-modal"
 
 export function TopMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const [showRating, setShowRating] = useState(false)
   const [showReport, setShowReport] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
 
   const handleGithubClick = () => {
     window.open("https://github.com/nife-codes/playground", "_blank")
@@ -25,16 +26,15 @@ export function TopMenu() {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
-            <HelpTooltip>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground"
-              >
-                <HelpCircle className="w-4 h-4" />
-                <span>Help</span>
-              </Button>
-            </HelpTooltip>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowHelp(true)}
+              className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground"
+            >
+              <HelpCircle className="w-4 h-4" />
+              <span>Help</span>
+            </Button>
             <Button
               variant="ghost"
               size="sm"
@@ -80,12 +80,16 @@ export function TopMenu() {
         {isOpen && (
           <div className="md:hidden border-t border-border/50 bg-card/50 backdrop-blur-sm">
             <div className="px-4 py-3 space-y-2">
-              <HelpTooltip>
-                <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm text-foreground">
-                  <HelpCircle className="w-4 h-4" />
-                  <span>Help</span>
-                </button>
-              </HelpTooltip>
+              <button
+                onClick={() => {
+                  setShowHelp(true)
+                  setIsOpen(false)
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm text-foreground"
+              >
+                <HelpCircle className="w-4 h-4" />
+                <span>Help</span>
+              </button>
               <button
                 onClick={() => {
                   setShowRating(true)
@@ -121,6 +125,7 @@ export function TopMenu() {
         )}
       </div>
 
+      <HelpModal open={showHelp} onOpenChange={setShowHelp} />
       <RatingModal open={showRating} onOpenChange={setShowRating} />
       <BugReportModal open={showReport} onOpenChange={setShowReport} />
     </>
