@@ -1,4 +1,4 @@
-# Playground 2048
+# Playground
 
 This is an open-source playground project.
 
