@@ -4,18 +4,16 @@ import React, { useState } from "react"
 import { Menu, X, Github, Star, AlertCircle, HelpCircle } from "lucide-react"
 import { Button } from "./ui/button"
 import { RatingModal } from "./rating-modal"
+import { BugReportModal } from "./bug-report-modal"
 import { HelpTooltip } from "./help-tooltip"
 
 export function TopMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const [showRating, setShowRating] = useState(false)
+  const [showReport, setShowReport] = useState(false)
 
   const handleGithubClick = () => {
     window.open("https://github.com/nife-codes/playground", "_blank")
-  }
-
-  const handleReportClick = () => {
-    window.open("https://github.com/nife-codes/playground/issues/new", "_blank")
   }
 
   return (
@@ -49,7 +47,7 @@ export function TopMenu() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={handleReportClick}
+              onClick={() => setShowReport(true)}
               className="gap-2 text-xs text-foreground hover:bg-destructive/10 hover:text-foreground"
             >
               <AlertCircle className="w-4 h-4" />
@@ -100,7 +98,7 @@ export function TopMenu() {
               </button>
               <button
                 onClick={() => {
-                  handleReportClick()
+                  setShowReport(true)
                   setIsOpen(false)
                 }}
                 className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm text-foreground"
@@ -124,6 +122,7 @@ export function TopMenu() {
       </div>
 
       <RatingModal open={showRating} onOpenChange={setShowRating} />
+      <BugReportModal open={showReport} onOpenChange={setShowReport} />
     </>
   )
 }

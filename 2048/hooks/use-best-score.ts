@@ -1,59 +1,42 @@
-"use client"
+import { useState } from "react"
+import { collection, addDoc } from "firebase/firestore"
+import { db } from "../lib/firebase"
 
-import { useState, useEffect } from "react"
+interface BugReport {
+  description: string
+  email?: string
+  timestamp: number
+  userAgent: string
+}
 
-const BEST_SCORE_KEY = "spider2048-best-score"
+export function useBugReports() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-/**
- * Hook for managing persistent best score in localStorage
- * Automatically saves and retrieves best score across sessions
- */
-export function useBestScore() {
-  const [bestScore, setBestScore] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  // Load best score from localStorage on mount
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(BEST_SCORE_KEY)
-      if (saved) {
-        const score = Number.parseInt(saved, 10)
-        if (!isNaN(score)) {
-          setBestScore(score)
-        }
-      }
-    } catch (error) {
-      console.error("Failed to load best score:", error)
+  const submitReport = async (description: string, email?: string) => {
+    if (!description.trim()) {
+      return { success: false, error: "Description is required" }
     }
-    setIsLoaded(true)
-  }, [])
 
-  // Save best score to localStorage whenever it changes
-  const updateBestScore = (newScore: number) => {
-    if (newScore > bestScore) {
-      setBestScore(newScore)
-      try {
-        localStorage.setItem(BEST_SCORE_KEY, newScore.toString())
-      } catch (error) {
-        console.error("Failed to save best score:", error)
-      }
-    }
-  }
-
-  // Clear best score (useful for testing or reset)
-  const clearBestScore = () => {
-    setBestScore(0)
+    setIsSubmitting(true)
     try {
-      localStorage.removeItem(BEST_SCORE_KEY)
+      await addDoc(collection(db, "reports"), {
+        description: description.trim(),
+        email: email?.trim() || null,
+        timestamp: Date.now(),
+        userAgent: navigator.userAgent
+      })
+
+      setIsSubmitting(false)
+      return { success: true }
     } catch (error) {
-      console.error("Failed to clear best score:", error)
+      console.error("Error submitting report:", error)
+      setIsSubmitting(false)
+      return { success: false, error: "Failed to submit report" }
     }
   }
 
   return {
-    bestScore,
-    updateBestScore,
-    clearBestScore,
-    isLoaded,
+    submitReport,
+    isSubmitting
   }
 }
