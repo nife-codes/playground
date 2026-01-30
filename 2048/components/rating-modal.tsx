@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Star } from "lucide-react"
+import { Star, X } from "lucide-react"
 import { useRatings } from "../hooks/use-ratings"
 
 interface RatingModalProps {
@@ -27,25 +27,30 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
     
     if (success) {
       setSubmitted(true)
-      setTimeout(() => {
-        onOpenChange(false)
-        setSubmitted(false)
-        setSelectedStars(0)
-      }, 2000)
     }
   }
 
   const handleClose = () => {
     if (!isSubmitting) {
       onOpenChange(false)
-      setSelectedStars(0)
-      setSubmitted(false)
+      setTimeout(() => {
+        setSubmitted(false)
+        setSelectedStars(0)
+      }, 300)
     }
   }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm">
-      <div className="bg-card border border-border rounded-lg shadow-lg max-w-md w-full p-6">
+      <div className="bg-card border border-border rounded-lg shadow-lg max-w-md w-full p-6 relative">
+        <button
+          onClick={handleClose}
+          disabled={isSubmitting}
+          className="absolute top-4 right-4 p-1 rounded-lg hover:bg-muted transition-colors"
+        >
+          <X className="w-5 h-5 text-foreground" />
+        </button>
+
         <div className="space-y-4">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-foreground mb-2">
@@ -61,10 +66,22 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
           {hasRated ? (
             <div className="text-center py-6">
               <p className="text-muted-foreground">You've already rated this game!</p>
+              <button
+                onClick={handleClose}
+                className="mt-4 px-6 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
+              >
+                Close
+              </button>
             </div>
           ) : submitted ? (
             <div className="text-center py-6">
-              <p className="text-accent text-lg font-semibold">Rating submitted!</p>
+              <p className="text-primary text-lg font-semibold mb-4">Rating submitted!</p>
+              <button
+                onClick={handleClose}
+                className="px-6 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
+              >
+                Close
+              </button>
             </div>
           ) : (
             <>
@@ -81,7 +98,7 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
                     <Star
                       className={`w-10 h-10 ${
                         star <= (hoverStars || selectedStars)
-                          ? "fill-yellow-400 text-yellow-400"
+                          ? "fill-primary text-primary"
                           : "text-muted-foreground"
                       }`}
                     />
@@ -92,7 +109,7 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
               <div className="flex gap-3">
                 <button
                   onClick={handleClose}
-                  className="flex-1 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors"
+                  className="flex-1 px-4 py-2 rounded-lg border border-border text-foreground hover:bg-muted transition-colors"
                   disabled={isSubmitting}
                 >
                   Cancel
@@ -100,7 +117,7 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
                 <button
                   onClick={handleSubmit}
                   disabled={selectedStars === 0 || isSubmitting}
-                  className="flex-1 px-4 py-2 rounded-lg bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex-1 px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
@@ -110,7 +127,7 @@ export function RatingModal({ open, onOpenChange }: RatingModalProps) {
 
           {!hasRated && !submitted && (
             <p className="text-xs text-center text-muted-foreground">
-              Your rating is stored locally. You can only rate once per browser.
+              You can only rate once per browser.
             </p>
           )}
         </div>

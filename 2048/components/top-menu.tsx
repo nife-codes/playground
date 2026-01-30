@@ -31,7 +31,7 @@ export function TopMenu() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="gap-2 text-xs hover:bg-primary/10"
+                className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground"
               >
                 <HelpCircle className="w-4 h-4" />
                 <span>Help</span>
@@ -41,7 +41,7 @@ export function TopMenu() {
               variant="ghost"
               size="sm"
               onClick={() => setShowRating(true)}
-              className="gap-2 text-xs hover:bg-accent/10"
+              className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground"
             >
               <Star className="w-4 h-4" />
               <span>Rate us</span>
@@ -50,7 +50,7 @@ export function TopMenu() {
               variant="ghost"
               size="sm"
               onClick={handleReportClick}
-              className="gap-2 text-xs hover:bg-destructive/10"
+              className="gap-2 text-xs text-foreground hover:bg-destructive/10 hover:text-foreground"
             >
               <AlertCircle className="w-4 h-4" />
               <span>Report</span>
@@ -59,7 +59,7 @@ export function TopMenu() {
               variant="ghost"
               size="sm"
               onClick={handleGithubClick}
-              className="gap-2 text-xs hover:bg-secondary/10"
+              className="gap-2 text-xs text-foreground hover:bg-secondary/10 hover:text-foreground"
             >
               <Github className="w-4 h-4" />
               <span>Contribute</span>
@@ -83,7 +83,7 @@ export function TopMenu() {
           <div className="md:hidden border-t border-border/50 bg-card/50 backdrop-blur-sm">
             <div className="px-4 py-3 space-y-2">
               <HelpTooltip>
-                <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm">
+                <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm text-foreground">
                   <HelpCircle className="w-4 h-4" />
                   <span>Help</span>
                 </button>
@@ -93,7 +93,7 @@ export function TopMenu() {
                   setShowRating(true)
                   setIsOpen(false)
                 }}
-                className="w-full text-left px-3 py-2 rounded-lg hover:bg-accent/10 transition-colors flex items-center gap-2 text-sm"
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors flex items-center gap-2 text-sm text-foreground"
               >
                 <Star className="w-4 h-4" />
                 <span>Rate us</span>
@@ -103,7 +103,7 @@ export function TopMenu() {
                   handleReportClick()
                   setIsOpen(false)
                 }}
-                className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm"
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm text-foreground"
               >
                 <AlertCircle className="w-4 h-4" />
                 <span>Report a problem</span>
@@ -113,7 +113,7 @@ export function TopMenu() {
                   handleGithubClick()
                   setIsOpen(false)
                 }}
-                className="w-full text-left px-3 py-2 rounded-lg hover:bg-secondary/10 transition-colors flex items-center gap-2 text-sm"
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-secondary/10 transition-colors flex items-center gap-2 text-sm text-foreground"
               >
                 <Github className="w-4 h-4" />
                 <span>Contribute</span>
