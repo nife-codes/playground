@@ -2,6 +2,8 @@
 
 import { useEffect } from "react"
 import { GameProvider, useGame } from "./game-context"
+import { ThemeProvider } from "./theme-provider"
+import { ThemeToggle } from "./theme-toggle"
 import { SudokuBoard } from "./sudoku-board"
 import { NumberPad } from "./number-pad"
 import { GameControls } from "./game-controls"
@@ -44,6 +46,10 @@ function GameContent() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center px-4 py-6 sm:py-10">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
       <h1 className="text-5xl sm:text-6xl font-serif text-primary mb-6">
         Sudoku
       </h1>
@@ -80,8 +86,10 @@ function GameContent() {
 
 export function SudokuGame() {
   return (
-    <GameProvider>
-      <GameContent />
-    </GameProvider>
+    <ThemeProvider>
+      <GameProvider>
+        <GameContent />
+      </GameProvider>
+    </ThemeProvider>
   )
 }

@@ -16,7 +16,6 @@ export function GameSettings() {
 
   return (
     <div className="space-y-4">
-      {/* Difficulty selector */}
       <div className="flex justify-center gap-2">
         {difficulties.map(({ value, label }) => (
           <button
@@ -37,9 +36,7 @@ export function GameSettings() {
         ))}
       </div>
 
-      {/* Settings row */}
       <div className="flex items-center justify-center gap-4">
-        {/* Hearts toggle */}
         <label className="flex items-center gap-2 cursor-pointer">
           <span className="text-sm font-medium text-foreground">Hearts</span>
           <button
@@ -49,22 +46,21 @@ export function GameSettings() {
             onClick={toggleHeartsEnabled}
             className={cn(
               "relative inline-flex h-6 w-11 items-center rounded-full",
-              "transition-colors duration-200",
+              "transition-colors duration-200 border-2",
               "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background",
-              heartsEnabled ? "bg-primary" : "bg-muted"
+              heartsEnabled ? "bg-primary border-primary" : "bg-muted border-border"
             )}
           >
             <span
               className={cn(
-                "inline-block h-4 w-4 transform rounded-full bg-white shadow-md",
+                "inline-block h-4 w-4 transform rounded-full shadow-md",
                 "transition-transform duration-200",
-                heartsEnabled ? "translate-x-6" : "translate-x-1"
+                heartsEnabled ? "translate-x-6 bg-primary-foreground" : "translate-x-1 bg-foreground"
               )}
             />
           </button>
         </label>
 
-        {/* New Game button */}
         <button
           type="button"
           onClick={() => newGame(difficulty)}
