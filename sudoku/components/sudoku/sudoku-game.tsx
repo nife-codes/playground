@@ -8,11 +8,11 @@ import { GameControls } from "./game-controls"
 import { GameHeader } from "./game-header"
 import { GameSettings } from "./game-settings"
 import { VictoryModal } from "./victory-modal"
+import { GameOverModal } from "./game-over-modal"
 
 function GameContent() {
   const { inputNumber, clearCell, toggleNotesMode, undo, togglePause, selectedCell, isPaused, isComplete } = useGame()
 
-  // Keyboard support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isPaused || isComplete) {
@@ -44,43 +44,36 @@ function GameContent() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center px-4 py-6 sm:py-10">
-      {/* Title */}
       <h1 className="text-5xl sm:text-6xl font-serif text-primary mb-6">
         Sudoku
       </h1>
 
-      {/* Game Header (Hearts + Timer) */}
       <div className="mb-6 w-full max-w-md">
         <GameHeader />
       </div>
 
-      {/* Settings */}
       <div className="mb-6">
         <GameSettings />
       </div>
 
-      {/* Sudoku Board */}
       <div className="mb-6">
         <SudokuBoard />
       </div>
 
-      {/* Game Controls */}
       <div className="mb-6">
         <GameControls />
       </div>
 
-      {/* Number Pad */}
       <div className="mb-6">
         <NumberPad />
       </div>
 
-      {/* Keyboard hints */}
       <div className="text-center text-sm text-muted-foreground mt-4 hidden sm:block">
         <p>Press <kbd className="px-2 py-1 bg-muted rounded text-xs font-mono">1-9</kbd> to enter numbers, <kbd className="px-2 py-1 bg-muted rounded text-xs font-mono">N</kbd> for notes, <kbd className="px-2 py-1 bg-muted rounded text-xs font-mono">Space</kbd> to pause</p>
       </div>
 
-      {/* Victory Modal */}
       <VictoryModal />
+      <GameOverModal />
     </div>
   )
 }
