@@ -3,6 +3,7 @@
 import { SudokuCell } from "./sudoku-cell"
 import { useGame } from "./game-context"
 import { cn } from "@/lib/utils"
+import { Pause } from "lucide-react"
 
 export function SudokuBoard() {
   const { isPaused } = useGame()
@@ -24,11 +25,10 @@ export function SudokuBoard() {
         )}
       </div>
       
-      {/* Pause overlay */}
       {isPaused && (
         <div className="absolute inset-0 bg-card/95 backdrop-blur-sm rounded-xl flex items-center justify-center">
           <div className="text-center">
-            <div className="text-6xl mb-4">⏸️</div>
+            <Pause className="w-16 h-16 text-primary mx-auto mb-4" />
             <p className="text-lg font-medium text-muted-foreground">Game Paused</p>
           </div>
         </div>
