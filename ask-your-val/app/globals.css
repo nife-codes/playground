@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #FFF5E8;
+  --foreground: #8B1538;
+  --card: #FFFFFF;
+  --card-foreground: #8B1538;
+  --popover: #FFFFFF;
+  --popover-foreground: #8B1538;
+  --primary: #DC143C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FFB6C1;
+  --secondary-foreground: #8B1538;
+  --muted: #FFEBD8;
+  --muted-foreground: #B8425C;
+  --accent: #FF69B4;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC143C;
+  --destructive-foreground: #FFFFFF;
+  --border: #8B1538;
+  --input: #FFEBD8;
+  --ring: #FF69B4;
+  --chart-1: #DC143C;
+  --chart-2: #FF69B4;
+  --chart-3: #FFB6C1;
+  --chart-4: #8B1538;
+  --chart-5: #FFF5E8;
+  --radius: 1rem;
+  --sidebar: #FFF5E8;
+  --sidebar-foreground: #8B1538;
+  --sidebar-primary: #DC143C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFB6C1;
+  --sidebar-accent-foreground: #8B1538;
+  --sidebar-border: #8B1538;
+  --sidebar-ring: #FF69B4;
+}
+
+@theme inline {
+  --font-sans: 'Lato', 'Lato Fallback', sans-serif;
+  --font-serif: 'Tangerine', 'Tangerine Fallback', cursive;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes heartFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0.7; }
+}
+
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pop-out {
+  0% { transform: scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: scale(0) rotate(180deg); opacity: 0; }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-heart-fall {
+  animation: heartFall 8s linear infinite;
+}
+
+.animate-pulse-heart {
+  animation: pulse-heart 1s ease-in-out infinite;
+}
+
+.animate-confetti {
+  animation: confetti 4s linear infinite;
+}
+
+.animate-pop-out {
+  animation: pop-out 0.5s ease-in-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s ease-out forwards;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes flower-fall {
+  0% { 
+    transform: translateY(-100px) rotate(0deg); 
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(100vh) rotate(360deg); 
+    opacity: 0;
+  }
+}
+
+.animate-flower-fall {
+  animation: flower-fall 10s linear infinite;
+}
