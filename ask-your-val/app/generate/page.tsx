@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
+import NavHeader from "@/components/nav-header"
 
 function GenerateContent() {
   const [copied, setCopied] = useState(false)
@@ -30,6 +31,7 @@ function GenerateContent() {
         backgroundPosition: "center",
       }}
     >
+      <NavHeader />
       
       <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center relative z-10">
         <div className="mb-6">
@@ -74,7 +76,7 @@ function GenerateContent() {
           )}
         </button>
         
-        <a
+        
           href={generatedLink}
           target="_blank"
           rel="noopener noreferrer"

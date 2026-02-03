@@ -3,39 +3,15 @@
 import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
-
+import NavHeader from "@/components/nav-header"
 
 const milkMochaMemes = [
-  {
-    id: 1,
-    name: "Spinning Hug",
-    url: "/memes/excited.gif",
-  },
-  {
-    id: 2,
-    name: "Cheek Hug",
-    url: "/memes/cutesy.gif",
-  },
-  {
-    id: 3,
-    name: "Love Hug",
-    url: "/memes/love.gif",
-  },
-  {
-    id: 4,
-    name: "Lift",
-    url: "/memes/lift.gif",
-  },
-  {
-    id: 5,
-    name: "Cuddle",
-    url: "/memes/cuddle.gif",
-  },
-  {
-    id: 6,
-    name: "Handshake",
-    url: "/memes/together.gif",
-  },
+  { id: 1, name: "Cuddle", url: "/memes/cuddle.gif" },
+  { id: 2, name: "Cutesy", url: "/memes/cutesy.gif" },
+  { id: 3, name: "Excited", url: "/memes/excited.gif" },
+  { id: 4, name: "Lift", url: "/memes/lift.gif" },
+  { id: 5, name: "Love", url: "/memes/love.gif" },
+  { id: 6, name: "Together", url: "/memes/together.gif" },
 ]
 
 function PickMemeContent() {
@@ -59,7 +35,7 @@ function PickMemeContent() {
         backgroundPosition: "center",
       }}
     >
-  
+      <NavHeader />
       
       <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10 max-w-2xl w-full text-center relative z-10">
         <h1 className="font-serif text-5xl md:text-6xl text-[#8B1538] mb-2">
@@ -67,7 +43,7 @@ function PickMemeContent() {
         </h1>
         
         <p className="text-[#8B1538] mb-6 text-lg">
-          {"Choose what they'll see when they say YES"}
+          Choose what they'll see when they say YES
         </p>
         
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
@@ -83,7 +59,7 @@ function PickMemeContent() {
             >
               <div className="aspect-square relative bg-[#FFF5F5]">
                 <Image
-                  src={meme.url || "/placeholder.svg"}
+                  src={meme.url}
                   alt={meme.name}
                   fill
                   className="object-cover"

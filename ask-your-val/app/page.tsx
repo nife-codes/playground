@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-
+import NavHeader from "@/components/nav-header"
 
 export default function Page1Name() {
   const [name, setName] = useState("")
@@ -23,7 +23,7 @@ export default function Page1Name() {
         backgroundPosition: "center",
       }}
     >
-     
+      <NavHeader />
       
       <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center relative z-10">
         <h1 className="font-serif text-6xl md:text-7xl text-[#8B1538] mb-4">
@@ -36,7 +36,7 @@ export default function Page1Name() {
         
         <div className="mb-8">
           <label htmlFor="name" className="block text-[#8B1538] mb-3 text-left font-medium">
-            {"Who is this Valentine for?"}
+            Who is this Valentine for?
           </label>
           <input
             type="text"
