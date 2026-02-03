@@ -76,7 +76,7 @@ function GenerateContent() {
           )}
         </button>
         
-        
+        <a
           href={generatedLink}
           target="_blank"
           rel="noopener noreferrer"
