@@ -6,12 +6,12 @@ import Image from "next/image"
 
 
 const milkMochaMemes = [
-  { id: 1, url: "https://media.tenor.com/IhSVfjKLYjAAAAAM/milk-and-mocha-cute.gif" },
-  { id: 2, url: "https://media.tenor.com/15CQz0cP4IUAAAAM/milk-and-mocha.gif" },
-  { id: 3, url: "https://media.tenor.com/tB0ReqHJVVgAAAAM/milk-mocha.gif" },
-  { id: 4, url: "https://media.tenor.com/dlOPj-2T_JoAAAAM/milk-and-mocha-love.gif" },
-  { id: 5, url: "https://media.tenor.com/M-5wLPQCHYAAAAAM/love-bear.gif" },
-  { id: 6, url: "https://media.tenor.com/xlhFy_dicnMAAAAM/milk-and-mocha.gif" },
+  { id: 1, url: "/memes/cuddle.gif" },
+  { id: 2, url: "/memes/cutesy.gif" },
+  { id: 3, url: "/memes/excited.gif" },
+  { id: 4, url: "/memes/lift.gif" },
+  { id: 5, url: "/memes/love.gif" },
+  { id: 6, url: "/memes/together.gif" },
 ]
 
 const noButtonTexts = [

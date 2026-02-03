@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { FallingFlowers } from "@/components/falling-flowers"
+
 
 export default function Page1Name() {
   const [name, setName] = useState("")
@@ -23,7 +23,7 @@ export default function Page1Name() {
         backgroundPosition: "center",
       }}
     >
-      <FallingFlowers />
+     
       
       <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center relative z-10">
         <h1 className="font-serif text-6xl md:text-7xl text-[#8B1538] mb-4">
