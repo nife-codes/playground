@@ -3,38 +3,38 @@
 import { useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
-import { FallingFlowers } from "@/components/falling-flowers"
+
 
 const milkMochaMemes = [
   {
     id: 1,
-    name: "Hug",
-    url: "https://media.tenor.com/IhSVfjKLYjAAAAAM/milk-and-mocha-cute.gif",
+    name: "Spinning Hug",
+    url: "/memes/excited.gif",
   },
   {
     id: 2,
-    name: "Kiss",
-    url: "https://media.tenor.com/15CQz0cP4IUAAAAM/milk-and-mocha.gif",
+    name: "Cheek Hug",
+    url: "/memes/cutesy.gif",
   },
   {
     id: 3,
-    name: "Love",
-    url: "https://media.tenor.com/tB0ReqHJVVgAAAAM/milk-mocha.gif",
+    name: "Love Hug",
+    url: "/memes/love.gif",
   },
   {
     id: 4,
-    name: "Heart",
-    url: "https://media.tenor.com/dlOPj-2T_JoAAAAM/milk-and-mocha-love.gif",
+    name: "Lift",
+    url: "/memes/lift.gif",
   },
   {
     id: 5,
-    name: "Happy",
-    url: "https://media.tenor.com/M-5wLPQCHYAAAAAM/love-bear.gif",
+    name: "Cuddle",
+    url: "/memes/cuddle.gif",
   },
   {
     id: 6,
-    name: "Together",
-    url: "https://media.tenor.com/xlhFy_dicnMAAAAM/milk-and-mocha.gif",
+    name: "Handshake",
+    url: "/memes/together.gif",
   },
 ]
 
@@ -59,7 +59,7 @@ function PickMemeContent() {
         backgroundPosition: "center",
       }}
     >
-      <FallingFlowers />
+  
       
       <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10 max-w-2xl w-full text-center relative z-10">
         <h1 className="font-serif text-5xl md:text-6xl text-[#8B1538] mb-2">

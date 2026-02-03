@@ -1,11 +1,10 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Tangerine, Lato } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"] });
-const _lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
+const tangerine = Tangerine({ subsets: ["latin"], weight: ["400", "700"], variable: '--font-serif' });
+const lato = Lato({ subsets: ["latin"], weight: ["400", "700"], variable: '--font-sans' });
 
 export const metadata: Metadata = {
   title: 'Be My Valentine',
@@ -36,9 +35,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`${lato.variable} ${tangerine.variable} font-sans antialiased`}>
         {children}
-        <Analytics />
       </body>
     </html>
   )

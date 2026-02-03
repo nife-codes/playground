@@ -2,7 +2,6 @@
 
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
-import { FallingFlowers } from "@/components/falling-flowers"
 
 function GenerateContent() {
   const [copied, setCopied] = useState(false)
@@ -31,7 +30,6 @@ function GenerateContent() {
         backgroundPosition: "center",
       }}
     >
-      <FallingFlowers />
       
       <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center relative z-10">
         <div className="mb-6">

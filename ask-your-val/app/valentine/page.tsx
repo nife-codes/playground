@@ -3,7 +3,7 @@
 import { useState, Suspense, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
-import { FallingFlowers } from "@/components/falling-flowers"
+
 
 const milkMochaMemes = [
   { id: 1, url: "https://media.tenor.com/IhSVfjKLYjAAAAAM/milk-and-mocha-cute.gif" },
@@ -106,7 +106,7 @@ function ValentineContent() {
         }}
       >
         <CelebrationHearts />
-        <FallingFlowers />
+        
         
         <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center relative z-10 animate-bounce-in">
           <h1 className="font-serif text-5xl md:text-6xl text-[#DC143C] mb-4">
@@ -114,7 +114,7 @@ function ValentineContent() {
           </h1>
           
           <p className="text-[#8B1538] text-xl mb-6">
-            {"You made someone very happy!"}
+            {"I love you so much!ʚ♡ɞ"}
           </p>
           
           <div className="rounded-xl overflow-hidden border-4 border-[#DC143C] mb-6 inline-block">
@@ -155,7 +155,6 @@ function ValentineContent() {
         backgroundPosition: "center",
       }}
     >
-      <FallingFlowers />
       
       <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-lg w-full text-center relative z-10">
         <div className="mb-4">
@@ -202,7 +201,7 @@ function ValentineContent() {
         
         {noClickCount >= noButtonTexts.length && (
           <p className="mt-4 text-[#DC143C] font-medium">
-            {"Looks like 'Yes' is your only option now!"}
+            {"Yes or Yes ni o!"}
           </p>
         )}
       </div>
