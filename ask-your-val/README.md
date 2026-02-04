@@ -1,16 +1,13 @@
-# Ask Your Val
-
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀:¨ ·.· ¨:
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`· . 𐙚
-
+# Ask Your Valentine˚ʚ♡ɞ˚
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 A cutesy Valentine's Day message generator where you can create personalized "Will you be my Valentine?" experiences with adorable Milk & Mocha reactions ♡
 
 **Live Link:** [playground-95z4.vercel.app](https://playground-95z4.vercel.app/)
-```
+
   /)/)
 ( . .)
 ( づ♡
-```
+
 
 ---
 
@@ -26,6 +23,7 @@ I made this because I wanted to spread some love to my girls ♡
 - Aysha 
 - [@Alessa](https://github.com/dpwalessa) (if you're reading this hiii babyyyyy!)
 - My sister Fifi ♡
+
 .𖥔 ݁ ˖. ݁₊ ⊹ . ݁˖ . ๋࣭݁ ⭑⚝
 
 
@@ -46,7 +44,7 @@ I made this because I wanted to spread some love to my girls ♡
 ![Step 4 - Valentine page](screenshots/pagefour.mp4)
 
 The "No" button shrinks and changes text with the text.
-And when they finally click "Yes"... endless falling hearts and your chosen Milk & Mocha celebration ♡
+When they finally click "Yes"... falling hearts and your chosen Milk & Mocha celebration ♡
 
 ---
 
