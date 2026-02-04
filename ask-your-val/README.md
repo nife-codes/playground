@@ -13,7 +13,6 @@ A cutesy Valentine's Day message generator where you can create personalized "Wi
 
 ## About This Project˚ʚ♡ɞ˚
 
-
 I made this because I wanted to spread some love to my girls ♡ 
 
 **Dedicated to:**
@@ -35,13 +34,13 @@ I made this because I wanted to spread some love to my girls ♡
 ![Step 1 - Enter name](screenshots/page1.png)
 
 **Step 2:** Pick your favorite Milk & Mocha reaction
-![Step 2 - Pick meme](screenshots/page2.mp4)
+![Step 2 - Pick meme](https://github.com/user-attachments/assets/6dc739c6-a207-4d97-9bf4-49813762facb)
 
 **Step 3:** Get your shareable link
 ![Step 3 - Share link](screenshots/page3.png)
 
 **Step 4:** They receive the cutest proposal ever!
-![Step 4 - Valentine page](screenshots/pagefour.mp4)
+![Step 4 - Valentine page](https://github.com/user-attachments/assets/c2a763f2-317f-4d0b-a7c4-459abb3b9f81)
 
 The "No" button shrinks and changes text with the text.
 When they finally click "Yes"... falling hearts and your chosen Milk & Mocha celebration ♡
