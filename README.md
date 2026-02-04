@@ -1,21 +1,51 @@
-# Playground
+# Playground ♡
 
-This is an open-source playground project.
+A collection of cute interactive projects, games, and experiments.
 
-Right now, it hosts a simple 2048 game experiment deployed on Vercel.  
-The goal of this repository is to serve as a space for small interactive ideas, games, and experiments.
+This is my space for trying new ideas, learning by building, and sharing fun little projects with the world.
 
-This README is intentionally minimal for now. A more detailed one will be added later.
+---
 
-## Live Demo
+## Current Projects
 
-First game (2048):  
-👉 https://playground2048.vercel.app/
+### Ask Your Valentine
+A playful Valentine's Day message generator with adorable Milk & Mocha reactions and a shrinking "No" button.
 
-## Status
+**Live Demo:** [playground-95z4.vercel.app](https://playground-95z4.vercel.app/)  
+**Explore:** [View Project →](ask-your-val/)
 
-- Open source
-- Actively iterating
-- More playground experiments coming
+### 2048 Game
+A classic 2048 puzzle game implementation.
 
-Feel free to explore the code.
+**Live Demo:** [playground2048.vercel.app](https://playground2048.vercel.app/)  
+**Explore:** [View Project →](2048/)
+
+### Sudoku
+**Live Demo:**  Coming soon...
+**Explore:** [View Project →](sudoku/)
+---
+
+## About This Repo
+
+.𖥔 ݁ ˖. ݁₊ ⊹ . ݁˖ . ๋࣭݁ ⭑⚝
+
+Each project lives in its own folder with its own README and setup instructions. Feel free to:
+- Explore the code
+- Try the live demos
+- Contribute improvements if you want to
+
+---
+
+## Get in Touch
+
+Want to collaborate or just say hi?
+
+**GitHub:** [@nife-codes](https://github.com/nife-codes)
+
+---
+
+<h1 align="center">Work in progress</h1>
+<p align="center">Other features are in progress, feel free to follow me to discover them.</p>
+<p align="center">
+  <img align="center" src="https://o.charles-chrismann.fr/trigger" alt="work in progress" width="256" />
+</p>
