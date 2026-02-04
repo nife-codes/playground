@@ -2,8 +2,7 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 A cutesy Valentine's Day message generator where you can create personalized "Will you be my Valentine?" experiences with adorable Milk & Mocha reactions ♡
 
-**Live Link:** [playground-95z4.vercel.app](https://playground-95z4.vercel.app/)
-
+**[CLICK HERE FOR THE LIVE LINK]**(https://playground-95z4.vercel.app/)
 ```
   /)/)
 ( . .)
