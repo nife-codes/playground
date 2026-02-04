@@ -4,10 +4,11 @@ A cutesy Valentine's Day message generator where you can create personalized "Wi
 
 **Live Link:** [playground-95z4.vercel.app](https://playground-95z4.vercel.app/)
 
+```
   /)/)
 ( . .)
 ( づ♡
-
+```
 
 ---
 
@@ -35,13 +36,13 @@ I made this because I wanted to spread some love to my girls ♡
 ![Step 1 - Enter name](screenshots/page1.png)
 
 **Step 2:** Pick your favorite Milk & Mocha reaction
-![Step 2 - Pick meme](screenshots/page2.mp4)
+![Step 2 - Pick meme](screenshots/page2.gif)
 
 **Step 3:** Get your shareable link
 ![Step 3 - Share link](screenshots/page3.png)
 
 **Step 4:** They receive the cutest proposal ever!
-![Step 4 - Valentine page](screenshots/pagefour.mp4)
+![Step 4 - Valentine page](screenshots/page4.gif)
 
 The "No" button shrinks and changes text with the text.
 When they finally click "Yes"... falling hearts and your chosen Milk & Mocha celebration ♡
