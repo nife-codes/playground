@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ask Your Val
 
-## Getting Started
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀:¨ ·.· ¨:
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`· . 𐙚
 
-First, run the development server:
+A cutesy Valentine's Day message generator where you can create personalized "Will you be my Valentine?" experiences with adorable Milk & Mocha reactions ♡
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Live Link:** [playground-95z4.vercel.app](https://playground-95z4.vercel.app/)
+```
+  /)/)
+( . .)
+( づ♡
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## About This Project˚ʚ♡ɞ˚
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+I made this because I wanted to spread some love to my girls ♡ 
 
-To learn more about Next.js, take a look at the following resources:
+**Dedicated to:**
+- Halima
+- Bukky
+- Faith 
+- Aysha 
+- [@Alessa](https://github.com/dpwalessa) (if you're reading this hiii babyyyyy!)
+- My sister Fifi ♡
+.𖥔 ݁ ˖. ݁₊ ⊹ . ݁˖ . ๋࣭݁ ⭑⚝
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✿ How It Works
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Step 1:** Enter your valentine's name
+![Step 1 - Enter name](screenshots/page1.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Step 2:** Pick your favorite Milk & Mocha reaction
+![Step 2 - Pick meme](screenshots/page2.mp4)
+
+**Step 3:** Get your shareable link
+![Step 3 - Share link](screenshots/page3.png)
+
+**Step 4:** They receive the cutest proposal ever!
+![Step 4 - Valentine page](screenshots/pagefour.mp4)
+
+The "No" button shrinks and changes text with the text.
+And when they finally click "Yes"... endless falling hearts and your chosen Milk & Mocha celebration ♡
+
+---
+
+## Tech Stack
+
+୨ৎ Built with love using:
+
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Firebase (for reports & ratings)
+- Vercel (deployment)
+
+---
+
+## Features
+
+˚ʚ♡ɞ˚
+
+- Personalized Valentine messages
+- 6 adorable Milk & Mocha GIF reactions
+- Shrinking "No" button with funny Igbo phrases
+- Endless falling hearts animation
+- Mobile responsive
+- Rate & Report functionality
+- Open source contributions welcome
+
+---
+
+## Run Locally
+```bash
+# Clone the repo
+git clone https://github.com/nife-codes/playground.git
+
+# Navigate to project
+cd playground/ask-your-val
+
+# Install dependencies
+npm install
+
+# Create .env.local and add your Firebase config
+cp .env.example .env.local
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) ♡
+
+---
+
+## Contributing
+
+.𖥔 ݁ ˖. ݁₊ ⊹
+
+Want to make this even cuter? PRs are welcome! Check out the main [playground repo](https://github.com/nife-codes/playground) to contribute.
+
+---
+
+
+```
+⠀⠀⠀⠀⠀⠀⠀⠀⠀:¨ ·.· ¨:
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`· . 𐙚  ୨ৎ
+```
+
+---
+
+
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢤⣺⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠈⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣄⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣀⣀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡿⠃⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣼⠋⠻⢿⣤⢿⠏⠀⠉⣟⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⡄⠀⠀⠁⠀⠀⠀⢀⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠸⣧⠀⠀⠀⠀⠀⣄⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⡂⠀⠀⠀⠀⠀⠐⣷⢀⣀⣴⡿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡤⡄⠀⠀⠀⠀
+⣤⣧⡤⠀⠀⠀⠀⠀⠀⠘⠘⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⣿⠋⠉⡇⣇⣤⣤⣤⡀
+⠀⢲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢻⡇⠀⠀⣷⡟⠁⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠐⠃⠀⠀⢀⣼⠇
+⠀⠀⠀⠀⠀⠀⢠⡶⢢⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⢸⡇⠀⣀⣤⣤⣶⠧⠃⠀
+⠀⠀⠀⢠⡖⠲⣿⠁⣸⠇⠀⠀⠀⠀⠀⡠⣧⠆⠀⠀⠀⠀⠈⠛⠳⠕⠛⠁⠀⠀⠀⠀
+⠀⠀⠀⠐⠿⡤⢤⣠⡿⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
