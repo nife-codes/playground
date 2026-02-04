@@ -24,6 +24,8 @@ A classic 2048 puzzle game implementation.
 
 **Live Demo:**  Coming soon...
 **Explore:** [View Project →](sudoku/)
+
+
 ---
 
 ## About This Repo
