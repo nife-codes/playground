@@ -11,16 +11,17 @@ This is my space for trying new ideas, learning by building, and sharing fun lit
 ### Ask Your Valentine
 A playful Valentine's Day message generator with adorable Milk & Mocha reactions and a shrinking "No" button.
 
-**Live Demo:** [playground-95z4.vercel.app](https://playground-95z4.vercel.app/)  
+**Live Demo:** [Ask your Valentine](https://playground-95z4.vercel.app/)  
 **Explore:** [View Project →](ask-your-val/)
 
 ### 2048 Game
 A classic 2048 puzzle game implementation.
 
-**Live Demo:** [playground2048.vercel.app](https://playground2048.vercel.app/)  
+**Live Demo:** [2048](https://playground2048.vercel.app/)  
 **Explore:** [View Project →](2048/)
 
 ### Sudoku
+
 **Live Demo:**  Coming soon...
 **Explore:** [View Project →](sudoku/)
 ---
