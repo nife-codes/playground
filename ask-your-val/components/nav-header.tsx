@@ -63,7 +63,7 @@ export default function NavHeader() {
         <nav className="max-w-7xl mx-auto flex justify-end">
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="https://github.com/nife-codes/playground#readme"
+              href="https://github.com/nife-codes/playground/ask-your-val#readme"
               target="_blank"
               className="text-[#8B1538] hover:text-[#DC143C] transition-colors font-medium text-sm flex items-center gap-1"
             >
@@ -97,7 +97,7 @@ export default function NavHeader() {
             </button>
 
             <Link
-              href="https://github.com/nife-codes/playground"
+              href="https://github.com/nife-codes/playground/ask-your-val"
               target="_blank"
               className="text-[#8B1538] hover:text-[#DC143C] transition-colors font-medium text-sm flex items-center gap-1 bg-[#FFB6C1]/20 px-3 py-1 rounded-lg hover:bg-[#FFB6C1]/40"
             >

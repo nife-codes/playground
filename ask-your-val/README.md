@@ -2,7 +2,7 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 A cutesy Valentine's Day message generator where you can create personalized "Will you be my Valentine?" experiences with adorable Milk & Mocha reactions ♡
 
-**[CLICK HERE FOR THE LIVE LINK]**(https://playground-95z4.vercel.app/)
+**[CLICK HERE FOR THE LIVE LINK](https://playground-95z4.vercel.app/)**
 ```
   /)/)
 ( . .)
@@ -101,6 +101,20 @@ Open [http://localhost:3000](http://localhost:3000) ♡
 .𖥔 ݁ ˖. ݁₊ ⊹
 
 Want to make this even cuter? PRs are welcome! Check out the main [playground repo](https://github.com/nife-codes/playground) to contribute.
+
+---
+
+## More Projects
+
+Check out other cute projects from me in the [playground repo](https://github.com/nife-codes/playground) ♡
+
+---
+
+<p align="center">
+  <a href="#top">
+    <img src="https://img.shields.io/badge/Back%20to%20the%20Top-FFB6C1?style=for-the-badge&logo=github&logoColor=white" alt="Back to the Top"/>
+  </a>
+</p>
 
 ---
 
