@@ -1,11 +1,13 @@
 "use client"
 
-import { Heart, Pause, Play } from "lucide-react"
+import { Heart, Pause, Play, Coins } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useGame } from "./game-context"
+import { useCoins } from "./coins-provider"
 
 export function GameHeader() {
   const { hearts, maxHearts, heartsEnabled, time, isPaused, togglePause, isComplete } = useGame()
+  const { coins } = useCoins()
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
@@ -14,8 +16,7 @@ export function GameHeader() {
   }
 
   return (
-    <div className="flex items-center justify-between w-full max-w-md mx-auto px-2">
-      {/* Hearts */}
+    <div className="flex items-center justify-between w-full max-w-md mx-auto px-2 gap-3">
       <div className="flex items-center gap-1">
         {heartsEnabled ? (
           Array.from({ length: maxHearts }, (_, i) => (
@@ -36,7 +37,11 @@ export function GameHeader() {
         )}
       </div>
 
-      {/* Timer */}
+      <div className="flex items-center gap-2 bg-card shadow-md rounded-full px-3 py-1 border border-border">
+        <Coins className="w-4 h-4 text-accent" />
+        <span className="font-bold text-foreground">{coins}</span>
+      </div>
+
       <div className="flex items-center gap-2">
         <button
           type="button"

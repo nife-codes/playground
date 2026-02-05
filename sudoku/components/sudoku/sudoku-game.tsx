@@ -3,6 +3,7 @@
 import { useEffect } from "react"
 import { GameProvider, useGame } from "./game-context"
 import { ThemeProvider } from "./theme-provider"
+import { CoinsProvider } from "./coins-provider"
 import { ThemeToggle } from "./theme-toggle"
 import { TopMenu } from "./top-menu"
 import { SudokuBoard } from "./sudoku-board"
@@ -92,9 +93,11 @@ function GameContent() {
 export function SudokuGame() {
   return (
     <ThemeProvider>
-      <GameProvider>
-        <GameContent />
-      </GameProvider>
+      <CoinsProvider>
+        <GameProvider>
+          <GameContent />
+        </GameProvider>
+      </CoinsProvider>
     </ThemeProvider>
   )
 }
