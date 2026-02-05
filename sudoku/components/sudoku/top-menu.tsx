@@ -3,10 +3,14 @@
 import React, { useState } from "react"
 import { Menu, X, Github, Star, AlertCircle, HelpCircle } from "lucide-react"
 import { HelpModal } from "./help-modal"
+import { RatingModal } from "./rating-modal"
+import { BugReportModal } from "./bug-report-modal"
 
 export function TopMenu() {
   const [isOpen, setIsOpen] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
+  const [showRating, setShowRating] = useState(false)
+  const [showReport, setShowReport] = useState(false)
 
   const handleGithubClick = () => {
     window.open("https://github.com/nife-codes/playground", "_blank")
@@ -31,6 +35,7 @@ export function TopMenu() {
             </button>
             <button
               type="button"
+              onClick={() => setShowRating(true)}
               className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground px-3 py-2 rounded-lg transition-colors flex items-center"
             >
               <Star className="w-4 h-4" />
@@ -38,6 +43,7 @@ export function TopMenu() {
             </button>
             <button
               type="button"
+              onClick={() => setShowReport(true)}
               className="gap-2 text-xs text-foreground hover:bg-destructive/10 hover:text-foreground px-3 py-2 rounded-lg transition-colors flex items-center"
             >
               <AlertCircle className="w-4 h-4" />
@@ -79,11 +85,23 @@ export function TopMenu() {
                 <HelpCircle className="w-4 h-4" />
                 <span>Help</span>
               </button>
-              <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors flex items-center gap-2 text-sm text-foreground">
+              <button
+                onClick={() => {
+                  setShowRating(true)
+                  setIsOpen(false)
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors flex items-center gap-2 text-sm text-foreground"
+              >
                 <Star className="w-4 h-4" />
                 <span>Rate us</span>
               </button>
-              <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm text-foreground">
+              <button
+                onClick={() => {
+                  setShowReport(true)
+                  setIsOpen(false)
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm text-foreground"
+              >
                 <AlertCircle className="w-4 h-4" />
                 <span>Report a problem</span>
               </button>
@@ -103,6 +121,8 @@ export function TopMenu() {
       </div>
 
       <HelpModal open={showHelp} onOpenChange={setShowHelp} />
+      <RatingModal open={showRating} onOpenChange={setShowRating} />
+      <BugReportModal open={showReport} onOpenChange={setShowReport} />
     </>
   )
 }
