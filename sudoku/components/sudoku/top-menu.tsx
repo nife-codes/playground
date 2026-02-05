@@ -39,7 +39,7 @@ export function TopMenu() {
               className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground px-3 py-2 rounded-lg transition-colors flex items-center"
             >
               <Star className="w-4 h-4" />
-              <span>Rate us</span>
+              <span>Rate</span>
             </button>
             <button
               type="button"
