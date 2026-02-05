@@ -5,6 +5,7 @@ import { GameProvider, useGame } from "./game-context"
 import { ThemeProvider } from "./theme-provider"
 import { CoinsProvider } from "./coins-provider"
 import { ThemeToggle } from "./theme-toggle"
+import { ColorPalette } from "./color-palette"
 import { TopMenu } from "./top-menu"
 import { SudokuBoard } from "./sudoku-board"
 import { NumberPad } from "./number-pad"
@@ -51,7 +52,8 @@ function GameContent() {
       <TopMenu />
       
       <div className="flex flex-col items-center px-4 pt-20 pb-6 sm:pt-24 sm:pb-10">
-        <div className="fixed top-20 right-4 z-40 sm:top-24">
+        <div className="fixed top-20 right-4 z-40 sm:top-24 flex gap-2">
+          <ColorPalette />
           <ThemeToggle />
         </div>
 
