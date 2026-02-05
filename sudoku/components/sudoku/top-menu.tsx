@@ -2,16 +2,14 @@
 
 import React, { useState } from "react"
 import { Menu, X, Github, Star, AlertCircle, HelpCircle } from "lucide-react"
+import { HelpModal } from "./help-modal"
 
 export function TopMenu() {
   const [isOpen, setIsOpen] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
 
   const handleGithubClick = () => {
     window.open("https://github.com/nife-codes/playground", "_blank")
-  }
-
-  const handleReportClick = () => {
-    window.open("https://github.com/nife-codes/playground/issues/new", "_blank")
   }
 
   return (
@@ -25,6 +23,7 @@ export function TopMenu() {
           <div className="hidden md:flex items-center gap-2">
             <button
               type="button"
+              onClick={() => setShowHelp(true)}
               className="gap-2 text-xs text-foreground hover:bg-primary/10 hover:text-foreground px-3 py-2 rounded-lg transition-colors flex items-center"
             >
               <HelpCircle className="w-4 h-4" />
@@ -39,7 +38,6 @@ export function TopMenu() {
             </button>
             <button
               type="button"
-              onClick={handleReportClick}
               className="gap-2 text-xs text-foreground hover:bg-destructive/10 hover:text-foreground px-3 py-2 rounded-lg transition-colors flex items-center"
             >
               <AlertCircle className="w-4 h-4" />
@@ -71,7 +69,13 @@ export function TopMenu() {
         {isOpen && (
           <div className="md:hidden border-t border-border/50 bg-card/50 backdrop-blur-sm">
             <div className="px-4 py-3 space-y-2">
-              <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm text-foreground">
+              <button
+                onClick={() => {
+                  setShowHelp(true)
+                  setIsOpen(false)
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors flex items-center gap-2 text-sm text-foreground"
+              >
                 <HelpCircle className="w-4 h-4" />
                 <span>Help</span>
               </button>
@@ -79,13 +83,7 @@ export function TopMenu() {
                 <Star className="w-4 h-4" />
                 <span>Rate us</span>
               </button>
-              <button
-                onClick={() => {
-                  handleReportClick()
-                  setIsOpen(false)
-                }}
-                className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm text-foreground"
-              >
+              <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-destructive/10 transition-colors flex items-center gap-2 text-sm text-foreground">
                 <AlertCircle className="w-4 h-4" />
                 <span>Report a problem</span>
               </button>
@@ -103,6 +101,8 @@ export function TopMenu() {
           </div>
         )}
       </div>
+
+      <HelpModal open={showHelp} onOpenChange={setShowHelp} />
     </>
   )
 }

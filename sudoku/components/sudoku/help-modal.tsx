@@ -73,7 +73,7 @@ export function HelpModal({ open, onOpenChange }: HelpModalProps) {
             onClick={() => onOpenChange(false)}
             className="w-full px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            Got it!
+            Thanks Nife!
           </button>
         </div>
       </div>
