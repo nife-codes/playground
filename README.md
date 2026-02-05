@@ -22,7 +22,7 @@ A classic 2048 puzzle game implementation.
 
 ### Sudoku
 
-Live Demo:  Coming soon...
+**Live Demo:** [2048](https://playground-sudoku.vercel.app/)  
 **Explore:** [View Project →](sudoku/)
 
 
